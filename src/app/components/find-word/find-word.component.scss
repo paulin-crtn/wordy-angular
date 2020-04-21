@@ -1,0 +1,139 @@
+header {
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    .navigation {
+        img {
+            width: 70px;
+        }
+    }    
+    .statistics {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 300;
+        .scores {
+            text-align: center;
+            line-height: 1.4rem;
+            padding-right: 25px;
+            margin-right: 25px;
+            border-right: 3px solid #ffffff;
+            .current-score {
+                .score-numerator {
+                    font-size: 3rem;
+                    font-weight: 400;
+                }
+                .score-denumerator {
+                    margin-left: 7px;
+                    font-size: 1.6rem;
+                }
+            }
+            .best-score {
+                margin-top: 10px;
+                padding-top: 5px;
+                border-top: 1px solid #ffffff;
+            }
+        }
+        .life-remaining {
+            position: relative;
+            .life-remaining-value {
+                position: absolute;
+                right: 0;
+                bottom: -5px;
+                font-size: 1.6rem;
+            }
+            img {
+                width: 65px;
+            }
+        }
+    }
+}
+
+.definitions {
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    h1 {
+        font-size: 2rem;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 3rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+        font-style: italic;
+        font-weight: 300;
+    }
+    .see-more-definition {
+        cursor: pointer;
+    }
+}
+
+.propositions {
+    margin-top: 80px;
+    .proposition {
+        margin: 0 10px 10px 0;
+    }
+}
+
+.game-end {
+    text-align: center;
+    img {
+        display: block;
+        width: 240px;
+        margin: 0 auto 50px auto;
+    }
+    button {
+        font-size: 1.2rem;
+        width: 240px;
+    }
+}
+
+.error {
+    color: #000000;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 30px;
+        .navigation {
+            img {
+                width: 60px;
+            }
+        }   
+        .statistics {
+            .scores {
+                padding-right: 20px;
+                margin-right: 20px;
+                border-right: 2px solid #ffffff;
+                .current-score {
+                    .score-numerator {
+                        font-size: 2rem;
+                    }
+                    .score-denumerator {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+            .life-remaining {
+                .life-remaining-value {
+                    font-size: 1.2rem;
+                }
+                img {
+                    width: 50px;
+                }
+            }
+        }
+    }
+    .definitions {
+        h1 {
+            font-size: 1.8rem;
+            line-height: 2.8rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+}

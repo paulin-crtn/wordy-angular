@@ -1,0 +1,35 @@
+.container-without-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    line-height: 4rem;
+}
+
+p {
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 2rem;
+}
+
+a {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.website-title {
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 3.4rem;
+}
+
+.emoji {
+    margin-left: 10px;
+    font-size: 1.8rem;
+}
