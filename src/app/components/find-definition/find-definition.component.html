@@ -14,12 +14,25 @@
             <div class="word">
                 <div>
                     <h1>{{ currentWord.name | titlecase }}</h1>
+
                     <p 
                     *ngIf="currentWord.definitions[0].synonyms.length > 1 && !seeSynonyms"
                     (click)="seeSynonyms = true"
-                    class="see-synonyms">Voir de synonymes</p>
+                    class="see-more">Voir des synonymes</p>
                     <div *ngFor="let synonym of currentWord.definitions[0].synonyms; let index = index">
-                        <h2 *ngIf="seeSynonyms && index !== 0">{{ synonym.value }}</h2>
+                        <h2 *ngIf="seeSynonyms && index !== 0">
+                            <img class="icon" src="assets/equal.svg" alt="equal"><span>{{ synonym.value | titlecase }}</span>
+                        </h2>
+                    </div>
+                    <p 
+
+                    *ngIf="currentWord.definitions[0].antonyms.length > 1 && !seeAntonyms"
+                    (click)="seeAntonyms = true"
+                    class="see-more">Voir des antonymes</p>
+                    <div *ngFor="let antonym of currentWord.definitions[0].antonyms; let index = index">
+                        <h2 *ngIf="seeAntonyms && index !== 0">
+                            <img class="icon" src="assets/not-equal.svg" alt="not equal"><span>{{ antonym.value | titlecase }}</span>
+                        </h2>
                     </div>
                 </div>
             </div>

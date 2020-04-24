@@ -16,7 +16,8 @@ export class FindDefinitionComponent implements OnInit {
   currentDefinitions: string[] = [];
   wordUsed: number[] = [];
   loading: boolean;
-  seeMoreDefinition: boolean;
+  seeSynonyms: boolean;
+  seeAntonyms: boolean;
   wordsFound: number = 0;
   lifeRemaining: number = 5;
   gameOver: boolean = false;
@@ -113,7 +114,8 @@ export class FindDefinitionComponent implements OnInit {
   }
 
   resetWord() {
-    this.seeMoreDefinition = false;
+    this.seeSynonyms = false;
+    this.seeAntonyms = false;
     this.currentWords = [];
     this.currentDefinitions = [];
     this.getRandomWord();
