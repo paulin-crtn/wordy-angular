@@ -12,7 +12,7 @@ import { Word } from 'src/app/core/word';
 export class FindWordComponent implements OnInit {
   words: Word[] = [];
   currentWord: Word;
-  currentProposition: number[] = [];
+  currentWords: number[] = [];
   wordUsed: number[] = [];
   loading: boolean;
   seeMoreDefinition: boolean;
@@ -58,14 +58,14 @@ export class FindWordComponent implements OnInit {
     }
   }
 
-  getRandomPropositions() {
+  getRandomWords() {
     let numPropositions = 4;
     for (let i = 0; i < numPropositions; i++) {
       const randomIndex =  Math.floor(Math.random() * Math.floor(this.words.length));      
-      if (this.currentProposition.includes(randomIndex)) {
+      if (this.currentWords.includes(randomIndex)) {
         numPropositions +=1;
       } else {
-        this.currentProposition.push(randomIndex);
+        this.currentWords.push(randomIndex);
       }
     }
   }
@@ -77,7 +77,7 @@ export class FindWordComponent implements OnInit {
       if (this.wordUsed.includes(randomIndex)) {
         numWord +=1;
       } else {
-        this.currentProposition.push(randomIndex);
+        this.currentWords.push(randomIndex);
         this.currentWord = this.words[randomIndex];
         this.wordUsed.push(randomIndex);
         console.log(this.currentWord.name);
@@ -95,15 +95,15 @@ export class FindWordComponent implements OnInit {
   }
 
   resetWord() {
-    this.seeMoreDefinition = null;
-    this.currentProposition = [];
+    this.seeMoreDefinition = false;
+    this.currentWords = [];
     this.getRandomWord();
-    this.getRandomPropositions();
+    this.getRandomWords();
     this.sort();
   }
 
   sort() {
-    this.currentProposition.sort((a, b) => {
+    this.currentWords.sort((a, b) => {
       return a - b;
     });
   }

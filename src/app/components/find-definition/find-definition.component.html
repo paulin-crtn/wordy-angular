@@ -1,1 +1,52 @@
-<p>find-definition works!</p>
+<app-header
+[wordsFound]="wordsFound"
+[wordsTotal]="words.length"
+[bestScore]="bestScore"
+[lifeRemaining]="lifeRemaining"></app-header>
+
+<main class="container-with-header">
+    <div class="wrapper">
+
+        <div *ngIf="loading">Loading data...</div>
+
+        <div *ngIf="!loading && !gameOver && !gameCongrats">
+
+            <div class="word">
+                <div>
+                    <h1>{{ currentWord.name | titlecase }}</h1>
+                    <p 
+                    *ngIf="currentWord.definitions[0].synonyms.length > 1 && !seeSynonyms"
+                    (click)="seeSynonyms = true"
+                    class="see-synonyms">Voir de synonymes</p>
+                    <div *ngFor="let synonym of currentWord.definitions[0].synonyms; let index = index">
+                        <h2 *ngIf="seeSynonyms && index !== 0">{{ synonym.value }}</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="propositions">
+                <div *ngFor="let definition of currentDefinitions"> 
+                    <button
+                    (click)="checkAnswer(definition)"
+                    class="proposition button-xlarge pure-button">{{ definition }}</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div *ngIf="gameOver" class="game-end">
+            <img src="assets/ghost.svg" alt="ghost">
+            <button
+            (click)="resetGame()" 
+            class="button-xlarge pure-button">Rejouer</button>
+        </div>
+
+        <div *ngIf="gameCongrats" class="game-end">
+            <img src="assets/cake-slice.svg" alt="cake">
+            <button
+            (click)="resetGame()" 
+            class="button-xlarge pure-button">Rejouer</button>
+        </div>
+
+    </div>
+</main>

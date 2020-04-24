@@ -11,7 +11,7 @@
 
         <div *ngIf="!loading && !gameOver && !gameCongrats">
 
-            <div class="definitions">
+            <div class="definition">
                 <div>
                     <h1>{{ currentWord.definitions[0].value }}</h1>
                     <p 
@@ -25,11 +25,11 @@
             </div>
 
             <div class="propositions">
-                <div 
-                *ngFor="let index of currentProposition"
+                <button 
+                *ngFor="let index of currentWords"
                 (click)="checkAnswer(words[index].name)"
                 class="proposition button-xlarge pure-button">{{ words[index].name | titlecase }}
-                </div>
+                </button>
             </div>
 
         </div>

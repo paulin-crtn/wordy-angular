@@ -24,6 +24,19 @@ body {
     margin: 0 auto;
 }
 
+.game-end {
+    text-align: center;
+    img {
+        display: block;
+        width: 240px;
+        margin: 0 auto 50px auto;
+    }
+    button {
+        font-size: 1.2rem;
+        width: 240px;
+    }
+}
+
 @media (max-width: 600px) {
     .container-with-header {
         min-height: calc(100vh -  160px);
