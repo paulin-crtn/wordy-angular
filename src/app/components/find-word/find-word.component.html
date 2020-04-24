@@ -13,13 +13,13 @@
 
             <div class="definition">
                 <div>
-                    <h1>{{ currentWord.definitions[0].value }}</h1>
+                    <h1>{{ currentWord.definitions[randomDefinitionIndex].value }}</h1>
                     <p 
                     *ngIf="currentWord.definitions.length > 1 && !seeMoreDefinition"
                     (click)="seeMoreDefinition = true"
-                    class="see-more-definition">Voir plus de définition</p>
+                    class="see-more-definition">Voir d'autres définitions</p>
                     <div *ngFor="let definition of currentWord.definitions; let index = index">
-                        <h2 *ngIf="seeMoreDefinition && index !== 0">{{ definition.value }}</h2>
+                        <h2 *ngIf="seeMoreDefinition && index !== randomDefinitionIndex">{{ definition.value }}</h2>
                     </div>
                 </div>
             </div>

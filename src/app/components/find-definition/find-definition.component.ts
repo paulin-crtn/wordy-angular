@@ -99,7 +99,6 @@ export class FindDefinitionComponent implements OnInit {
         this.currentWords.push(randomIndex);
         this.currentWord = this.words[randomIndex];
         this.wordUsed.push(randomIndex);
-        console.log(this.currentWord.name);
       }
     }
   }

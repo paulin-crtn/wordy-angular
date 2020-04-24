@@ -12,6 +12,7 @@ import { Word } from 'src/app/core/word';
 export class FindWordComponent implements OnInit {
   words: Word[] = [];
   currentWord: Word;
+  randomDefinitionIndex: number;
   currentWords: number[] = [];
   wordUsed: number[] = [];
   loading: boolean;
@@ -80,7 +81,13 @@ export class FindWordComponent implements OnInit {
         this.currentWords.push(randomIndex);
         this.currentWord = this.words[randomIndex];
         this.wordUsed.push(randomIndex);
-        console.log(this.currentWord.name);
+        // Get random definition
+        const wordDefinitionsLength = this.currentWord.definitions.length;             
+        if (wordDefinitionsLength > 1) {
+          this.randomDefinitionIndex =  Math.floor(Math.random() * Math.floor(wordDefinitionsLength));
+        } else {
+          this.randomDefinitionIndex = 0;
+        }
       }
     }
   }
