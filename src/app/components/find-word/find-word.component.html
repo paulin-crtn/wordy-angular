@@ -30,7 +30,8 @@
             <div class="propositions">
                 <button 
                 *ngFor="let word of currentWords"
-                (click)="checkAnswer(word.name)"
+                (click)="checkAnswer(word)"
+                [disabled]="wrongWords.includes(word)"
                 class="proposition button-xlarge pure-button">{{ word.name | titlecase }}
                 </button>
             </div>

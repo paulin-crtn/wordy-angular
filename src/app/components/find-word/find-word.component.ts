@@ -22,6 +22,7 @@ export class FindWordComponent implements OnInit {
   gameOver: boolean = false;
   gameCongrats: boolean = false;
   bestScore: number = 0;
+  wrongWords: Word[] = [];
   
   constructor(
     private wordService: WordService,
@@ -39,8 +40,8 @@ export class FindWordComponent implements OnInit {
     )
   }
 
-  checkAnswer(word: string) {
-    if (this.currentWord.name === word) {
+  checkAnswer(word: Word) {
+    if (this.currentWord.name === word.name) {
       this.wordsFound += 1;
       if (this.wordsRemaining.length === 0) {
         this.gameCongrats = true;
@@ -49,6 +50,7 @@ export class FindWordComponent implements OnInit {
       }
     } else {
       if (this.lifeRemaining > 0) {
+        this.wrongWords.push(word);
         this.lifeRemaining -= 1;
       } else {
         this.gameOver = true;
@@ -98,6 +100,7 @@ export class FindWordComponent implements OnInit {
   resetWord() {
     this.seeMoreDefinition = false;
     this.currentWords = [];
+    this.wrongWords = [];
     this.getRandomWord();
     this.getRandomWords();
     this.sort();

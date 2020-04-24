@@ -24,6 +24,7 @@ export class FindDefinitionComponent implements OnInit {
   gameOver: boolean = false;
   gameCongrats: boolean = false;
   bestScore: number = 0;
+  wrongDefinitions: Definition[] = [];
   
   constructor(
     private wordService: WordService,
@@ -35,15 +36,15 @@ export class FindDefinitionComponent implements OnInit {
       words => {
         this.words = words;
         this.wordsRemaining = [...this.words];
-        this.resetWord();
+        this.resetDefinition();
         this.loading = false;
       }
     )
   }
 
-  checkAnswer(definition: string) {
+  checkAnswer(definition: Definition) {
     const isCorrect = this.currentWord.definitions.find(def => {
-      if (def.value === definition)
+      if (def.value === definition.value)
         return true;
     });
 
@@ -52,10 +53,11 @@ export class FindDefinitionComponent implements OnInit {
       if (this.wordsRemaining.length === 0) {
         this.gameCongrats = true;
       } else {
-        this.resetWord();
+        this.resetDefinition();
       }
     } else {
       if (this.lifeRemaining > 0) {
+        this.wrongDefinitions.push(definition);
         this.lifeRemaining -= 1;
       } else {
         this.gameOver = true;
@@ -108,14 +110,15 @@ export class FindDefinitionComponent implements OnInit {
     this.lifeRemaining = 5;
     this.gameOver = false;
     this.gameCongrats = false;
-    this.resetWord();
+    this.resetDefinition();
   }
 
-  resetWord() {
+  resetDefinition() {
     this.seeSynonyms = false;
     this.seeAntonyms = false;
     this.currentWords = [];
     this.currentDefinitions = [];
+    this.wrongDefinitions = [];
     this.getRandomWord();
     this.getRandomWords();
     this.getRandomDefinitions();

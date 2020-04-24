@@ -43,7 +43,8 @@
             <div class="propositions">
                 <div *ngFor="let definition of currentDefinitions"> 
                     <button
-                    (click)="checkAnswer(definition.value)"
+                    (click)="checkAnswer(definition)"
+                    [disabled]="wrongDefinitions.includes(definition)"
                     class="proposition button-xlarge pure-button">{{ definition.value }}</button>
                 </div>
             </div>
