@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { WordService } from 'src/app/core/word.service';
-import { Word } from 'src/app/core/word';
+import { Word, Definition } from 'src/app/core/word';
 
 
 @Component({
@@ -12,8 +12,9 @@ import { Word } from 'src/app/core/word';
 export class FindDefinitionComponent implements OnInit {
   words: Word[] = [];
   currentWord: Word;
+  currentDefinitionIndex: number;
   currentWords: number[] = [];
-  currentDefinitions: string[] = [];
+  currentDefinitions: Definition[] = [];
   wordUsed: number[] = [];
   loading: boolean;
   seeSynonyms: boolean;
@@ -66,13 +67,18 @@ export class FindDefinitionComponent implements OnInit {
   }
 
   getRandomDefinitions() {
+    let randomIndex: number;
     this.currentWords.forEach(index => {
-      const wordDefinitionsLength = this.words[index].definitions.length;      
+      const wordDefinitionsLength = this.words[index].definitions.length;
       if (wordDefinitionsLength > 1) {
-        const randomIndex =  Math.floor(Math.random() * Math.floor(wordDefinitionsLength));
-        this.currentDefinitions.push(this.words[index].definitions[randomIndex].value);
+        randomIndex =  Math.floor(Math.random() * Math.floor(wordDefinitionsLength));
       } else {
-        this.currentDefinitions.push(this.words[index].definitions[0].value);
+        randomIndex  = 0;
+      }
+      this.currentDefinitions.push(this.words[index].definitions[randomIndex]);
+      // Afficher les synonymes associés à une définition
+      if (this.words[index] === this.currentWord) {
+        this.currentDefinitionIndex = randomIndex;
       }
     });
   }

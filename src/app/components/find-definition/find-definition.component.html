@@ -19,20 +19,20 @@
                     <h1>{{ currentWord.name | titlecase }}</h1>
 
                     <p 
-                    *ngIf="currentWord.definitions[0].synonyms.length > 0 && !seeSynonyms"
+                    *ngIf="currentWord.definitions[currentDefinitionIndex].synonyms.length && !seeSynonyms"
                     (click)="seeSynonyms = true"
                     class="see-more">Voir des synonymes</p>
-                    <div *ngFor="let synonym of currentWord.definitions[0].synonyms; let index = index">
+                    <div *ngFor="let synonym of currentWord.definitions[currentDefinitionIndex].synonyms; let index = index">
                         <h2 *ngIf="seeSynonyms">
                             <img class="icon" src="assets/equal.svg" alt="equal"><span>{{ synonym.value | titlecase }}</span>
                         </h2>
                     </div>
                     <p 
 
-                    *ngIf="currentWord.definitions[0].antonyms.length > 0 && !seeAntonyms"
+                    *ngIf="currentWord.definitions[currentDefinitionIndex].antonyms.length && !seeAntonyms"
                     (click)="seeAntonyms = true"
                     class="see-more">Voir des antonymes</p>
-                    <div *ngFor="let antonym of currentWord.definitions[0].antonyms; let index = index">
+                    <div *ngFor="let antonym of currentWord.definitions[currentDefinitionIndex].antonyms; let index = index">
                         <h2 *ngIf="seeAntonyms">
                             <img class="icon" src="assets/not-equal.svg" alt="not equal"><span>{{ antonym.value | titlecase }}</span>
                         </h2>
@@ -43,8 +43,8 @@
             <div class="propositions">
                 <div *ngFor="let definition of currentDefinitions"> 
                     <button
-                    (click)="checkAnswer(definition)"
-                    class="proposition button-xlarge pure-button">{{ definition }}</button>
+                    (click)="checkAnswer(definition.value)"
+                    class="proposition button-xlarge pure-button">{{ definition.value }}</button>
                 </div>
             </div>
 
