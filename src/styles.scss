@@ -37,6 +37,45 @@ body {
     }
 }
 
+// LOADER
+// Source : https://loading.io/css/
+
+.loader {
+    text-align: center;
+    .lds-dual-ring {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+    }
+    .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 84px;
+        height: 84px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    p {
+        margin-top: 40px;
+        font-size: 1.6rem;
+        font-weight: 300;
+    }
+}
+
+
+// RESPONSIVE WEB DESIGN
+
 @media (max-width: 600px) {
     .container-with-header {
         min-height: calc(100vh -  160px);

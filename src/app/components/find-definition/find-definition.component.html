@@ -7,7 +7,10 @@
 <main class="container-with-header">
     <div class="wrapper">
 
-        <div *ngIf="loading">Loading data...</div>
+        <div class="loader" *ngIf="loading">
+            <div class="lds-dual-ring"></div>
+            <p>Chargement en cours</p>
+        </div>
 
         <div *ngIf="!loading && !gameOver && !gameCongrats">
 
