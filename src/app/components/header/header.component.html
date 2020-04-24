@@ -1,0 +1,18 @@
+<header>
+    <nav class="navigation">
+        <a routerLink="/"><img src="assets/arrow.svg" alt="arrow left"></a>
+    </nav>
+    <div class="statistics">
+        <div class="scores">
+            <div class="current-score">
+                <span class="score-numerator">{{ wordsFound }}</span>
+                <span class="score-denumerator">/ {{ wordsTotal }}</span>
+            </div>
+            <div class="best-score">Record: {{ bestScore }}</div>
+        </div>
+        <div class="life-remaining">
+            <span class="life-remaining-value">{{ lifeRemaining }}</span>
+            <img src="assets/heart.svg" alt="heart">
+        </div>
+    </div>
+</header>

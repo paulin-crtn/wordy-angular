@@ -9,6 +9,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FindWordComponent } from './components/find-word/find-word.component';
 import { FindDefinitionComponent } from './components/find-definition/find-definition.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FindDefinitionComponent } from './components/find-definition/find-defin
     HomepageComponent,
     PageNotFoundComponent,
     FindWordComponent,
-    FindDefinitionComponent
+    FindDefinitionComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

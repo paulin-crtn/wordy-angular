@@ -1,0 +1,52 @@
+header {
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    .navigation {
+        img {
+            width: 70px;
+        }
+    }    
+    .statistics {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 300;
+        .scores {
+            text-align: center;
+            line-height: 1.4rem;
+            padding-right: 25px;
+            margin-right: 25px;
+            border-right: 3px solid #ffffff;
+            .current-score {
+                .score-numerator {
+                    font-size: 3rem;
+                    font-weight: 400;
+                }
+                .score-denumerator {
+                    margin-left: 7px;
+                    font-size: 1.6rem;
+                }
+            }
+            .best-score {
+                margin-top: 10px;
+                padding-top: 5px;
+                border-top: 1px solid #ffffff;
+            }
+        }
+        .life-remaining {
+            position: relative;
+            .life-remaining-value {
+                position: absolute;
+                right: 0;
+                bottom: -5px;
+                font-size: 1.6rem;
+            }
+            img {
+                width: 65px;
+            }
+        }
+    }
+}

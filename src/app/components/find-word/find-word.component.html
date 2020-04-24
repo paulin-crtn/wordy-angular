@@ -1,21 +1,8 @@
-<header>
-    <nav class="navigation">
-        <a routerLink="/"><img src="assets/arrow.svg" alt="arrow left"></a>
-    </nav>
-    <div class="statistics">
-        <div class="scores">
-            <div class="current-score">
-                <span class="score-numerator">{{ wordsFound }}</span>
-                <span class="score-denumerator">/ {{ words.length }}</span>
-            </div>
-            <div class="best-score">Record: {{ bestScore }}</div>
-        </div>
-        <div class="life-remaining">
-            <span class="life-remaining-value">{{ lifeRemaining }}</span>
-            <img src="assets/heart.svg" alt="heart">
-        </div>
-    </div>
-</header>
+<app-header
+[wordsFound]="wordsFound"
+[wordsTotal]="words.length"
+[bestScore]="bestScore"
+[lifeRemaining]="lifeRemaining"></app-header>
 
 <main class="container-with-header">
     <div class="wrapper">
