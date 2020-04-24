@@ -11,10 +11,10 @@ import { Word } from 'src/app/core/word';
 })
 export class FindWordComponent implements OnInit {
   words: Word[] = [];
+  wordsRemaining: Word[] = [];
   currentWord: Word;
+  currentWords: Word[] = [];
   randomDefinitionIndex: number;
-  currentWords: number[] = [];
-  wordUsed: number[] = [];
   loading: boolean;
   seeMoreDefinition: boolean;
   wordsFound: number = 0;
@@ -32,6 +32,7 @@ export class FindWordComponent implements OnInit {
     this.wordService.getWords().subscribe(
       words => {
         this.words = words;
+        this.wordsRemaining = [...this.words];
         this.resetWord();
         this.loading = false;
       }
@@ -41,7 +42,7 @@ export class FindWordComponent implements OnInit {
   checkAnswer(word: string) {
     if (this.currentWord.name === word) {
       this.wordsFound += 1;
-      if (this.wordUsed.length === this.words.length) {
+      if (this.wordsRemaining.length === 0) {
         this.gameCongrats = true;
       } else {
         this.resetWord();
@@ -60,40 +61,33 @@ export class FindWordComponent implements OnInit {
   }
 
   getRandomWords() {
-    let numPropositions = 4;
-    for (let i = 0; i < numPropositions; i++) {
+    let randomWordsNumber = 4;
+    for (let i = 0; i < randomWordsNumber; i++) {
       const randomIndex =  Math.floor(Math.random() * Math.floor(this.words.length));      
-      if (this.currentWords.includes(randomIndex)) {
-        numPropositions +=1;
+      if (this.currentWords.includes(this.words[randomIndex])) {
+        randomWordsNumber +=1;
       } else {
-        this.currentWords.push(randomIndex);
+        this.currentWords.push(this.words[randomIndex]);
       }
     }
   }
 
   getRandomWord() {
-    let numWord = 1;
-    for (let i = 0; i < numWord; i++) {
-      const randomIndex =  Math.floor(Math.random() * Math.floor(this.words.length));      
-      if (this.wordUsed.includes(randomIndex)) {
-        numWord +=1;
-      } else {
-        this.currentWords.push(randomIndex);
-        this.currentWord = this.words[randomIndex];
-        this.wordUsed.push(randomIndex);
-        // Get random definition
-        const wordDefinitionsLength = this.currentWord.definitions.length;             
-        if (wordDefinitionsLength > 1) {
-          this.randomDefinitionIndex =  Math.floor(Math.random() * Math.floor(wordDefinitionsLength));
-        } else {
-          this.randomDefinitionIndex = 0;
-        }
-      }
+    const randomIndex =  Math.floor(Math.random() * Math.floor(this.wordsRemaining.length));      
+    this.currentWord = this.wordsRemaining[randomIndex];
+    this.currentWords.push(this.wordsRemaining[randomIndex]);
+    this.wordsRemaining.splice(randomIndex, 1);
+    // Get random definition
+    const wordDefinitionsLength = this.currentWord.definitions.length;             
+    if (wordDefinitionsLength > 1) {
+      this.randomDefinitionIndex =  Math.floor(Math.random() * Math.floor(wordDefinitionsLength));
+    } else {
+      this.randomDefinitionIndex = 0;
     }
   }
 
   resetGame() {
-    this.wordUsed = [];
+    this.wordsRemaining = [...this.words];
     this.wordsFound = 0;
     this.lifeRemaining = 5;
     this.gameOver = false;
@@ -110,8 +104,8 @@ export class FindWordComponent implements OnInit {
   }
 
   sort() {
-    this.currentWords.sort((a, b) => {
-      return a - b;
+    this.currentWords.sort(() => {
+      return 0.5 - Math.random();
     });
   }
 }

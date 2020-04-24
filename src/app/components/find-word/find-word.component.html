@@ -29,9 +29,9 @@
 
             <div class="propositions">
                 <button 
-                *ngFor="let index of currentWords"
-                (click)="checkAnswer(words[index].name)"
-                class="proposition button-xlarge pure-button">{{ words[index].name | titlecase }}
+                *ngFor="let word of currentWords"
+                (click)="checkAnswer(word.name)"
+                class="proposition button-xlarge pure-button">{{ word.name | titlecase }}
                 </button>
             </div>
 

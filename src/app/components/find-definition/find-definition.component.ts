@@ -11,11 +11,11 @@ import { Word, Definition } from 'src/app/core/word';
 })
 export class FindDefinitionComponent implements OnInit {
   words: Word[] = [];
+  wordsRemaining: Word[] = [];
   currentWord: Word;
   currentDefinitionIndex: number;
-  currentWords: number[] = [];
+  currentWords: Word[] = [];
   currentDefinitions: Definition[] = [];
-  wordUsed: number[] = [];
   loading: boolean;
   seeSynonyms: boolean;
   seeAntonyms: boolean;
@@ -34,6 +34,7 @@ export class FindDefinitionComponent implements OnInit {
     this.wordService.getWords().subscribe(
       words => {
         this.words = words;
+        this.wordsRemaining = [...this.words];
         this.resetWord();
         this.loading = false;
       }
@@ -48,7 +49,7 @@ export class FindDefinitionComponent implements OnInit {
 
     if (isCorrect) {
       this.wordsFound += 1;
-      if (this.wordUsed.length === this.words.length) {
+      if (this.wordsRemaining.length === 0) {
         this.gameCongrats = true;
       } else {
         this.resetWord();
@@ -68,49 +69,41 @@ export class FindDefinitionComponent implements OnInit {
 
   getRandomDefinitions() {
     let randomIndex: number;
-    this.currentWords.forEach(index => {
-      const wordDefinitionsLength = this.words[index].definitions.length;
-      if (wordDefinitionsLength > 1) {
-        randomIndex =  Math.floor(Math.random() * Math.floor(wordDefinitionsLength));
+    this.currentWords.forEach(word => {
+      if (word.definitions.length > 1) {
+        randomIndex =  Math.floor(Math.random() * Math.floor(word.definitions.length));
       } else {
         randomIndex  = 0;
       }
-      this.currentDefinitions.push(this.words[index].definitions[randomIndex]);
+      this.currentDefinitions.push(word.definitions[randomIndex]);
       // Afficher les synonymes associés à une définition
-      if (this.words[index] === this.currentWord) {
+      if (word === this.currentWord) {
         this.currentDefinitionIndex = randomIndex;
       }
     });
   }
 
   getRandomWords() {
-    let numPropositions = 2;
-    for (let i = 0; i < numPropositions; i++) {
+    let randomWordsNumber = 2;
+    for (let i = 0; i < randomWordsNumber; i++) {
       const randomIndex =  Math.floor(Math.random() * Math.floor(this.words.length));      
-      if (this.currentWords.includes(randomIndex)) {
-        numPropositions +=1;
+      if (this.currentWords.includes(this.words[randomIndex])) {
+        randomWordsNumber += 1;
       } else {
-        this.currentWords.push(randomIndex);
+        this.currentWords.push(this.words[randomIndex]);
       }
     }
   }
 
   getRandomWord() {
-    let numWord = 1;
-    for (let i = 0; i < numWord; i++) {
-      const randomIndex =  Math.floor(Math.random() * Math.floor(this.words.length));      
-      if (this.wordUsed.includes(randomIndex)) {
-        numWord +=1;
-      } else {
-        this.currentWords.push(randomIndex);
-        this.currentWord = this.words[randomIndex];
-        this.wordUsed.push(randomIndex);
-      }
-    }
+    const randomIndex =  Math.floor(Math.random() * Math.floor(this.wordsRemaining.length));      
+    this.currentWord = this.wordsRemaining[randomIndex];
+    this.currentWords.push(this.wordsRemaining[randomIndex]);
+    this.wordsRemaining.splice(randomIndex, 1);
   }
 
   resetGame() {
-    this.wordUsed = [];
+    this.wordsRemaining = [...this.words];
     this.wordsFound = 0;
     this.lifeRemaining = 5;
     this.gameOver = false;
