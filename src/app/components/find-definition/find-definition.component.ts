@@ -130,6 +130,8 @@ export class FindDefinitionComponent implements OnInit {
   }
 
   sort() {
-    this.currentDefinitions.sort();
+    this.currentDefinitions.sort(() => {
+      return 0.5 - Math.random();
+    });
   }
 }
