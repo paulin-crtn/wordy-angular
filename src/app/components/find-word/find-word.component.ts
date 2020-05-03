@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 import { WordService } from 'src/app/core/word.service';
 import { Word } from 'src/app/core/word';
@@ -25,10 +26,20 @@ export class FindWordComponent implements OnInit {
   wrongWords: Word[] = [];
   
   constructor(
+    private titleService: Title,
+    private metaService: Meta,
     private wordService: WordService,
   ) { }
 
   ngOnInit() {
+    // Page title
+    this.titleService.setTitle('Trouve le bon mot | Wordy');
+    // Page meta description
+    this.metaService.addTag({
+      name: 'description', 
+      content: 'Parmi une liste de mots retrouve celui qui correspond à la définition proposée.'
+    })
+    // Load data
     this.loading = true;
     this.wordService.getWords().subscribe(
       words => {

@@ -3,11 +3,11 @@ import { Title, Meta } from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'app-page-not-found',
-  templateUrl: './page-not-found.component.html',
-  styleUrls: ['./page-not-found.component.scss']
+  selector: 'app-legal',
+  templateUrl: './legal.component.html',
+  styleUrls: ['./legal.component.scss']
 })
-export class PageNotFoundComponent implements OnInit {
+export class LegalComponent implements OnInit {
 
   constructor(
     private titleService: Title,
@@ -16,11 +16,11 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit() {
     // Page title
-    this.titleService.setTitle('Page non trouvée | Wordy');
+    this.titleService.setTitle('Mentions légales | Wordy');
     // Page meta description
     this.metaService.addTag({
       name: 'description', 
-      content: 'Erreur 404 : la page demandée n\'existe pas.'
+      content: 'Mentions légales et politique de confidentialité de la plateforme Wordy.'
     })
   }
 

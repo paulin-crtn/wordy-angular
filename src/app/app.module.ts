@@ -10,6 +10,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { FindWordComponent } from './components/find-word/find-word.component';
 import { FindDefinitionComponent } from './components/find-definition/find-definition.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LegalComponent } from './components/legal/legal.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { HeaderComponent } from './components/header/header.component';
     PageNotFoundComponent,
     FindWordComponent,
     FindDefinitionComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    LegalComponent
   ],
   imports: [
     BrowserModule,
