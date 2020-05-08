@@ -74,7 +74,7 @@ export class FindWordComponent implements OnInit {
   }
 
   getRandomWords() {
-    let randomWordsNumber = 4;
+    let randomWordsNumber = 3;
     for (let i = 0; i < randomWordsNumber; i++) {
       const randomIndex =  Math.floor(Math.random() * Math.floor(this.words.length));      
       if (this.currentWords.includes(this.words[randomIndex])) {
