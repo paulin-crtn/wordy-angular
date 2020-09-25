@@ -6,6 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Learn new words ! This is a small side project developed during the quarantine.
 
+## Configuration
+
+You may need to change the `apiUrl` variable in the `src/environments/environment.ts` file.
+
 ## API
 
 You will need the wordy-api repository in order to make it work.
