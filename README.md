@@ -4,7 +4,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## About
 
-Learn new words ! This is a small side project developed during the quarantine.
+Learn new words quickly and in a fun way by taking the quiz. Over 700 words. French only.
+
+## Screenshot
+
+![Screenshot](https://github.com/paulin-crtn/wordy/blob/master/screenshot-1.png)
+![Screenshot](https://github.com/paulin-crtn/wordy/blob/master/screenshot-2.png)
 
 ## Configuration
 
@@ -16,4 +21,5 @@ You will need the wordy-api repository in order to make it work.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Run `npm install` to install dependencies.
+2. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
