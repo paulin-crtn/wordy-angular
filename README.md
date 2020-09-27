@@ -8,8 +8,8 @@ Learn new words quickly and in a fun way by taking the quiz. Over 700 words. Fre
 
 ## Screenshot
 
-![Screenshot](https://github.com/paulin-crtn/wordy/master/screenshot-1.png)
-![Screenshot](https://github.com/paulin-crtn/wordy/master/screenshot-2.png)
+![Screenshot](/screenshot-1.png)
+![Screenshot](/screenshot-2.png)
 
 ## Configuration
 
