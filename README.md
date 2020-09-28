@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## About
 
-Learn new words quickly and in a fun way by taking the quiz. Over 700 words. French only.
+Learn new words quickly and in a fun way by taking the quiz. Over 700 words (french only).
 
 ![Screenshot](/screenshot-1.png)
 ![Screenshot](/screenshot-2.png)
